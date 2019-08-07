@@ -1,12 +1,11 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { View, Button, ButtonProperties, StyleSheet } from "react-native";
+import { Text, View, Button, ButtonProperties, StyleSheet } from "react-native";
 import { white, red } from "ansi-colors";
 
 const styles = StyleSheet.create({
   mainView: {
-    padding: 50,
     flex: 1,
     justifyContent: "center",
     alignItems: "center"
@@ -14,13 +13,13 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 36,
     padding: 5,
-    color: white,
-    backgroundColor: red
+    backgroundColor: "red"
   }
 });
 const MainMenu = props => {
   return (
     <View style={styles.mainView}>
+      <Text>Text</Text>
       <Button
         onPress={props.changeView}
         title="Start The Day"
