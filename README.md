@@ -21,8 +21,8 @@ Most people have things they need to do every morning, like ensuring their lapto
    * The user can click a delete button next to each task to remove it from the database
    * The user can input new tasks with given conditions and see it added to the list of tasks 
 3. When the user clicks to start their day, they see an ordered list of their routine items 
-  * Conditional items will only render as appropriate (i.e. "rain" items will only appear if its supposed to rain on a given day)
-  * Tasks will have a "complete" button next to them to trigger completion for that day. They will disappear from the view when they are completed 
+     * Conditional items will only render as appropriate (i.e. "rain" items will only appear if its supposed to rain on a given day)
+     * Tasks will have a "complete" button next to them to trigger completion for that day. They will disappear from the view when they are completed 
 
 ## User Stories for Stretch Goals
 
