@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { Text, TextInput, View, Button, ButtonProperties } from "react-native";
 import MainMenu from "./components/mainMenu.js";
-import SQLite from "react-native-sqlite-storage";
 
 export default class App extends Component {
   constructor(props) {
@@ -13,18 +12,6 @@ export default class App extends Component {
       weatherData: []
     };
     this.changeView = this.changeView.bind(this);
-  }
-
-  componentDidMount() {
-    SQLite.DEBUG(true);
-    SQLite.enablePromise(true);
-
-    SQLite.openDatabase({
-      name: "TestDatabase",
-      location: "default"
-    }).then(db => {
-      console.log("Database open!");
-    });
   }
 
   changeView(value) {
