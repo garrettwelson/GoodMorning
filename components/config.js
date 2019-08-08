@@ -81,7 +81,7 @@ class Config extends Component {
       weather: this.state.weather,
       days: this.state.days
     })
-      .then((response) => { console.log(response.body) });
+      .then(() => this.props.updateTasks());
   }
 
   render() {

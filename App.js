@@ -15,15 +15,20 @@ export default class App extends Component {
     };
     this.toggleConfig = this.toggleConfig.bind(this);
     this.toggleDay = this.toggleDay.bind(this);
-    this.toggleMain = this.toggleMain.bind(this)
+    this.toggleMain = this.toggleMain.bind(this);
+    this.updateTasks = this.updateTasks.bind(this)
   }
 
   componentDidMount() {
+    this.updateTasks()
+  }
+
+  updateTasks() {
     axios.get('http:0.0.0.0:8080/getDailyTasks').then(result => {
       this.setState({
         taskData: result.data
       })
-    }).then(() => { console.log(this.state.taskData) })
+    })
   }
 
   toggleConfig() {
@@ -69,6 +74,7 @@ export default class App extends Component {
           <Config
             taskData={this.state.taskData}
             toggleMain={this.toggleMain}
+            updateTasks={this.updateTasks}
           />
         </View>
       )
