@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Text, TextInput, View, Button, ButtonProperties } from "react-native";
 import MainMenu from "./components/mainMenu.js";
+import DayView from './components/day.js'
 import axios from "axios"
 
 export default class App extends Component {
@@ -52,6 +53,15 @@ export default class App extends Component {
           />
         </View>
       );
+    } else if (this.state.currentView === "day") {
+      return (
+        <View style={{ padding: 5, flex: 1 }}>
+          <DayView
+            taskData={this.state.taskData}
+            toggleMain={this.toggleMain}
+          />
+        </View>
+      )
     }
   }
 }
