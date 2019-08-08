@@ -9,34 +9,52 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-start",
     alignItems: "flex-start",
-    padding: 40
+    padding: 40,
+    backgroundColor: '#232528'
   },
   title: {
-    fontSize: 48,
-    color: '#ECA400'
+    flex: 1,
+    fontSize: 36,
+    color: '#FFA400'
   },
   subheading: {
-    fontSize: 36,
-    color: '#006992'
-  },
-  task: {
     fontSize: 24,
-    color: '#001D4A'
+    color: '#009FFD'
+  },
+  text: {
+    fontSize: 18,
+    color: '#EAF6FF'
   },
   currentItems: {
-    flex: 2
+    flex: 3
   },
+  instructions: {
+    fontSize: 12,
+    color: '#EAF6FF',
+    flex: 1
+  }
 });
 const Config = props => {
   return (
     <View style={styles.mainView}>
-      <Text style={styles.title}>Configure your tasks</Text>
-      <Text style={styles.subheading}>Current Tasks</Text>
-      <FlatList
-        style={styles.currentItems}
-        data={props.taskData}
-        renderItem={(({ item }) => <Text style={styles.task}>{item.task}</Text>)}
-      />
+      <Text style={styles.title}>Design your morning</Text>
+      <Text style={styles.instructions}>
+        View and delete your tasks below. Use the form at the bottom to add a task with your chosen conditions.
+      </Text>
+      <View style={styles.currentItems}>
+        <Text style={styles.subheading}>Current Tasks</Text>
+        <FlatList
+          data={props.taskData}
+          keyExtractor={(item, index) => index}
+          renderItem={({ item }) => {
+            return (
+              <Text style={styles.text} key={`item_${item._id}`}>
+                {item.task}
+              </Text>
+            )
+          }}
+        />
+      </View>
       <Button onPress={props.toggleMain} title="Go home" />
     </View>
   );
