@@ -2,7 +2,7 @@
 /* eslint-disable quotes */
 import React, { Component } from "react";
 import { Text, TextInput, View, Button, StyleSheet, FlatList, ActionSheetIOS } from "react-native";
-import { white, red } from "ansi-colors";
+import axios from 'axios';
 
 const styles = StyleSheet.create({
   mainView: {
@@ -49,6 +49,7 @@ class Config extends Component {
     }
     this.changeWeather = this.changeWeather.bind(this);
     this.dayPicker = this.dayPicker.bind(this);
+    this.sendTask = this.sendTask.bind(this);
   }
 
   changeWeather() {
@@ -71,6 +72,16 @@ class Config extends Component {
       this.setState({ days: newVal })
     }
     )
+  }
+
+  sendTask() {
+    if (this.state.text === "") return null;
+    axios.post('http://0.0.0.0:8080/addTask', {
+      task: this.state.text,
+      weather: this.state.weather,
+      days: this.state.days
+    })
+      .then((response) => { console.log(response.body) });
   }
 
   render() {
@@ -115,7 +126,7 @@ class Config extends Component {
           <Text style={styles.text} onPress={this.dayPicker}>{this.state.days}</Text>
           <Text style={styles.subheading}>Only when the weather is:</Text>
           <Text style={styles.text} onPress={this.changeWeather}>{this.state.weather}</Text>
-          <Button title="Add routine" color="#b0deff" />
+          <Button title="Add routine" color="#b0deff" onPress={this.sendTask} />
         </View>
       </View>
     );
