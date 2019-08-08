@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import { Text, TextInput, View, Button, ButtonProperties } from "react-native";
 import MainMenu from "./components/mainMenu.js";
+import axios from "axios"
 
 export default class App extends Component {
   constructor(props) {
@@ -9,12 +10,33 @@ export default class App extends Component {
     this.state = {
       currentView: "main",
       taskData: [],
-      weatherData: []
     };
-    this.changeView = this.changeView.bind(this);
+    this.toggleConfig = this.toggleConfig.bind(this);
+    this.toggleDay = this.toggleDay.bind(this);
+    this.toggleMain = this.toggleMain.bind(this)
   }
 
-  changeView(value) {
+  componentDidMount() {
+    axios.get('http:0.0.0.0:8080/getDailyTasks').then(result => {
+      this.setState({
+        taskData: result.data
+      })
+    }).then(() => { console.log(this.state.taskData) })
+  }
+
+  toggleConfig() {
+    this.setState({
+      currentView: "config"
+    });
+  }
+
+  toggleDay() {
+    this.setState({
+      currentView: "day"
+    });
+  }
+
+  toggleMain() {
     this.setState({
       currentView: "main"
     });
@@ -24,7 +46,10 @@ export default class App extends Component {
     if (this.state.currentView === "main") {
       return (
         <View style={{ padding: 5, flex: 1 }}>
-          <MainMenu changeView={this.changeView} />
+          <MainMenu
+            toggleConfig={this.toggleConfig}
+            toggleDay={this.toggleDay}
+          />
         </View>
       );
     }

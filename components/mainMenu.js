@@ -21,14 +21,16 @@ const MainMenu = props => {
     <View style={styles.mainView}>
       <Text>Text</Text>
       <Button
-        onPress={props.changeView}
+        onPress={props.toggleDay}
         title="Start The Day"
+        value="start"
         accessibilityLabel="Button to start the day"
         style={styles.button}
       />
       <Button
-        onPress={props.changeView}
+        onPress={props.toggleConfig}
         title="Configure Routine"
+        value="config"
         accessibilityLabel="Button to configure routine"
         style={styles.button}
       />
