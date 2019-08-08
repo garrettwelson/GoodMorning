@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
   mainView: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    padding: 5
   },
   button: {
     fontSize: 36,
