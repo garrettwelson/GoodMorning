@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { Text, View, Button, ButtonProperties, StyleSheet } from "react-native";
+import { Text, View, Button, StyleSheet } from "react-native";
 import { white, red } from "ansi-colors";
 
 const styles = StyleSheet.create({
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
 const MainMenu = props => {
   return (
     <View style={styles.mainView}>
-      <Text>Text</Text>
+      <Text>Welcome to Good Day!</Text>
       <Button
         onPress={props.toggleDay}
         title="Start The Day"
