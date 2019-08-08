@@ -1,7 +1,7 @@
 /* eslint-disable comma-dangle */
 /* eslint-disable quotes */
 import React, { Component } from "react";
-import { Text, TextInput, Switch, View, Button, StyleSheet, FlatList } from "react-native";
+import { Text, TextInput, Switch, View, Button, StyleSheet, FlatList, Picker, ActionSheetIOS } from "react-native";
 import { white, red } from "ansi-colors";
 
 const styles = StyleSheet.create({
@@ -10,29 +10,32 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
     padding: 40,
-    backgroundColor: '#232528'
   },
   title: {
     fontSize: 36,
-    color: '#FFA400'
+    color: '#ffd19a'
   },
   subheading: {
     fontSize: 24,
-    color: '#009FFD'
+    color: '#ffc5a1'
   },
   text: {
     fontSize: 18,
-    color: '#EAF6FF'
+    color: '#b0deff'
   },
   currentItems: {
     flex: 2
   },
   inputArea: {
-    flex: 2
+    flex: 3,
+    paddingBottom: 10
   },
   instructions: {
     fontSize: 12,
-    color: '#EAF6FF',
+    color: '#b0deff',
+  },
+  deleteButton: {
+
   }
 });
 class Config extends Component {
@@ -41,9 +44,30 @@ class Config extends Component {
     super(props);
     this.state = {
       text: "",
-      weather: "",
-      days: []
+      onRain: false,
+      days: "every day"
     }
+    this.changeRain = this.changeRain.bind(this);
+    this.dayPicker = this.dayPicker.bind(this)
+  }
+
+  changeRain() {
+    let conditions = this.state.onRain;
+    this.setState({
+      onRain: !conditions
+    })
+  }
+
+  dayPicker() {
+    ActionSheetIOS.showActionSheetWithOptions({
+      options: ["every day", "weekdays", "weekends", "cancel"],
+      cancelButtonIndex: 3
+    }, (buttonIndex) => {
+      let options = ["every day", "weekdays", "weekends", "cancel"];
+      let newVal = options[buttonIndex]
+      this.setState({ days: newVal })
+    }
+    )
   }
 
   render() {
@@ -59,12 +83,15 @@ class Config extends Component {
           <Text style={styles.subheading}>Current Tasks</Text>
           <FlatList
             data={this.props.taskData}
-            keyExtractor={(item, index) => index}
+            keyExtractor={(item, index) => `${item}_${index}`}
             renderItem={({ item }) => {
               return (
-                <Text style={styles.text} key={`item_${item._id}`}>
-                  {item.task}
-                </Text>
+                <View>
+                  <Text style={styles.text} key={`${item._id}`}>
+                    {item.task}
+                  </Text>
+                  <Button style={} title="delete" />
+                </View>
               )
             }}
           />
@@ -74,12 +101,21 @@ class Config extends Component {
           <TextInput
             value={this.state.text}
             placeholder="Type a task"
-            placeholderTextColor='#EAF6FF'
+            placeholderTextColor='#b0deff'
             onChangeText={(text) => this.setState({ text })}
             style={styles.text}
           />
+          <Text style={styles.subheading}>I want to do this:</Text>
+          <Button
+            style={styles.text}
+            onPress={this.daypicker}
+            title={this.state.days}
+          />
+          <Switch
+            value={this.state.onRain}
+            onChange={this.changeRain}
+          />
         </View>
-        <Button onPress={this.props.toggleMain} title="Go home" />
       </View >
     );
   }
