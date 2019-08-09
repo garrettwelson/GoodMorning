@@ -61,6 +61,7 @@ class Config extends Component {
     this.changeWeather = this.changeWeather.bind(this);
     this.dayPicker = this.dayPicker.bind(this);
     this.sendTask = this.sendTask.bind(this);
+    this.taskConfig = this.taskConfig.bind(this)
   }
 
   changeWeather() {
@@ -95,6 +96,31 @@ class Config extends Component {
       .then(() => this.props.updateTasks());
   }
 
+  taskConfig(item) {
+    let dayLengths = {
+      7: 'every day',
+      5: 'weekdays',
+      2: 'weekends'
+    }
+    let day = dayLengths[item.days.length];
+    let weather;
+    (item.rainOnly) ? weather = 'rainy weather' : weather = "any weather"
+    console.log(day, weather)
+    ActionSheetIOS.showActionSheetWithOptions({
+      options: [`Weather conditions: ${weather}`, `Frequency: ${day}`, 'Cancel', 'Delete Item'],
+      cancelButtonIndex: 2,
+      destructiveButtonIndex: 3
+    },
+      buttonIndex => {
+        if (buttonIndex === 3) {
+          axios.delete(`http://0.0.0.0:8080/deleteTask/${item._id}`).then(() => { this.props.updateTasks() }).catch(() => { return null })
+        } else {
+          return null
+        }
+      }
+    )
+  }
+
   render() {
     return (
       <View style={styles.mainView} >
@@ -114,17 +140,9 @@ class Config extends Component {
             data={this.props.taskData}
             keyExtractor={(item, index) => `${item}_${index}`}
             renderItem={({ item }) => {
-              let dayLengths = {
-                7: 'every day',
-                5: 'weekdays',
-                2: 'weekends'
-              }
-              let day = dayLengths[item.days.length];
-              let weather;
-              (item.rainOnly) ? weather = 'rainy weather' : weather = "any weather"
               return (
-                <Text style={styles.text}>
-                  {item.task} | {day} | {weather}
+                <Text style={styles.text} onPress={this.taskConfig.bind(this, item)}>
+                  {item.task}
                 </Text>
               );
             }}
