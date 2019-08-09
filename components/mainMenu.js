@@ -39,7 +39,7 @@ const MainMenu = props => {
         style={styles.backgroundImg}
       >
         <View style={styles.menuView}>
-          <Text style={styles.title}>Good Day</Text>
+          <Text style={styles.title}>GoodMorning</Text>
           <Button
             onPress={props.toggleDay}
             title="Start The Day"
