@@ -127,7 +127,7 @@ class Config extends Component {
         <View style={styles.titleView}>
           <Text style={styles.title}>Configuration</Text>
           <Text style={styles.instructions}>
-            <Text>View and delete your tasks below </Text>
+            <Text>View and delete your tasks below. </Text>
             <Text>
               Use the form at the bottom to add a task with your chosen
               conditions
