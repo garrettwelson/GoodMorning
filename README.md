@@ -1,7 +1,7 @@
-# Good Day
+# Good Morning
 
 
-## Purpose
+## Morning
 
 Good Day is a morning routine manager app meant to provide an easy and intuitive way to start your day off right. Unlike most task managers that focus on completing tasks once, Good Day allows you to build a set of **habits** that are essential to setting you up for a successful day. 
 
@@ -18,6 +18,7 @@ Most people have things they need to do every morning, like ensuring their lapto
 1. When the user opens the app, they see a simple two-button interface that allows them to configure their morning or start their day
 2. When the user clicks to configure their morning, they are brought to a list of existing tasks in their morning routine
    * The user can see existing tasks
+   * The user can click an existing task to see its configuration details and optionally delete it
    * The user can input new tasks with given conditions and see it added to the list of tasks 
 3. When the user clicks to start their day, they see an ordered list of their routine items 
      * Conditional items will only render as appropriate (i.e. "rain" items will only appear if its supposed to rain on a given day)
