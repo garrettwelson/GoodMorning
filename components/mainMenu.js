@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
   button: {
     fontSize: 36,
     padding: 5,
+    color: '#ffffff',
   },
   menuView: {
     marginTop: 60,
@@ -26,7 +27,8 @@ const styles = StyleSheet.create({
   title: {
     color: '#ffffff',
     fontSize: 60,
-    fontFamily: "HelveticaNeue-Bold"
+    fontFamily: "HelveticaNeue-Bold",
+    paddingBottom: 25
   }
 });
 const MainMenu = props => {
@@ -44,6 +46,7 @@ const MainMenu = props => {
             value="start"
             accessibilityLabel="Button to start the day"
             style={styles.button}
+            color='#ffffff'
           />
           <Button
             onPress={props.toggleConfig}
@@ -51,6 +54,7 @@ const MainMenu = props => {
             value="config"
             accessibilityLabel="Button to configure routine"
             style={styles.button}
+            color='#ffffff'
           />
         </View>
       </ImageBackground>

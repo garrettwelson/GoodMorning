@@ -10,32 +10,43 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "flex-start",
     margin: 40,
+    fontFamily: "Helvetica Nueue"
   },
   title: {
     fontSize: 36,
-    color: '#ffd19a',
+    color: '#ff935c',
   },
   subheading: {
     fontSize: 24,
-    color: '#ffc5a1'
+    color: '#ff935c'
   },
   text: {
     fontSize: 18,
-    color: '#b0deff'
+    color: '#f9e090'
   },
   currentItems: {
     flex: 3
   },
   inputArea: {
     flex: 3,
-    paddingBottom: 10
+    paddingBottom: 10,
+    alignItems: "flex-start",
   },
   instructions: {
     fontSize: 12,
-    color: "#b0deff",
+    color: "#f9e090",
   },
   titleView: {
     flex: 1
+  },
+  submitTask: {
+    backgroundColor: '#ff935c',
+    marginTop: 25,
+    fontSize: 24,
+    color: "#f9e090",
+    borderColor: '#ff935c',
+    borderWidth: 0.5,
+    borderRadius: 10
   }
 });
 class Config extends Component {
@@ -60,17 +71,17 @@ class Config extends Component {
 
   dayPicker() {
     ActionSheetIOS.showActionSheetWithOptions({
-      options: ["every day", "weekdays", "weekends", "cancel", "delete"],
-      cancelButtonIndex: 3,
-      destructiveButtonIndex: 4
-    }, (buttonIndex) => {
-      if (buttonIndex === 3) {
-        return null
+      options: ["every day", "weekdays", "weekends", "cancel"],
+      cancelButtonIndex: 3
+    },
+      buttonIndex => {
+        if (buttonIndex === 3) {
+          return null
+        }
+        let options = ["every day", "weekdays", "weekends", "cancel"];
+        let newVal = options[buttonIndex]
+        this.setState({ days: newVal })
       }
-      let options = ["every day", "weekdays", "weekends", "cancel"];
-      let newVal = options[buttonIndex]
-      this.setState({ days: newVal })
-    }
     )
   }
 
@@ -118,7 +129,7 @@ class Config extends Component {
           <TextInput
             value={this.state.text}
             placeholder="Add a routine"
-            placeholderTextColor='#b0deff'
+            placeholderTextColor='#f9e090'
             onChangeText={(text) => this.setState({ text })}
             style={styles.text}
           />
@@ -126,8 +137,14 @@ class Config extends Component {
           <Text style={styles.text} onPress={this.dayPicker}>{this.state.days}</Text>
           <Text style={styles.subheading}>Only when the weather is:</Text>
           <Text style={styles.text} onPress={this.changeWeather}>{this.state.weather}</Text>
-          <Button title="Add routine" color="#b0deff" onPress={this.sendTask} />
+          <Text style={styles.submitTask} onPress={this.sendTask}>Add this routine</Text>
         </View>
+        <Button
+          style={{ paddingTop: 25 }}
+          title="Go home"
+          color="#f9e090"
+          onPress={this.props.toggleMain}
+        />
       </View>
     );
   }
