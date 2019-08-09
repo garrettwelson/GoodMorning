@@ -52,7 +52,7 @@ export default class App extends Component {
   render() {
     if (this.state.currentView === "main") {
       return (
-        <View style={{ padding: 5, flex: 1, backgroundColor: '#fff8a6' }}>
+        <View style={{ flex: 1 }}>
           <MainMenu
             toggleConfig={this.toggleConfig}
             toggleDay={this.toggleDay}
@@ -61,7 +61,7 @@ export default class App extends Component {
       );
     } else if (this.state.currentView === "day") {
       return (
-        <View style={{ padding: 5, flex: 1, backgroundColor: '#fff8a6' }}>
+        <View style={{ padding: 5, flex: 1, backgroundColor: '#0A101C' }}>
           <DayView
             taskData={this.state.taskData}
             toggleMain={this.toggleMain}
@@ -70,7 +70,7 @@ export default class App extends Component {
       )
     } else if (this.state.currentView === "config") {
       return (
-        <View style={{ padding: 5, flex: 1, backgroundColor: '#fff8a6' }}>
+        <View style={{ padding: 5, flex: 1, backgroundColor: '#0A101C' }}>
           <Config
             taskData={this.state.taskData}
             toggleMain={this.toggleMain}
