@@ -114,12 +114,18 @@ class Config extends Component {
             data={this.props.taskData}
             keyExtractor={(item, index) => `${item}_${index}`}
             renderItem={({ item }) => {
+              let dayLengths = {
+                7: 'every day',
+                5: 'weekdays',
+                2: 'weekends'
+              }
+              let day = dayLengths[item.days.length];
+              let weather;
+              (item.rainOnly) ? weather = 'rainy weather' : weather = "any weather"
               return (
-                <View>
-                  <Text style={styles.text} key={`${item._id}`}>
-                    {item.task}
-                  </Text>
-                </View>
+                <Text style={styles.text}>
+                  {item.task} | {day} | {weather}
+                </Text>
               );
             }}
           />

@@ -10,15 +10,14 @@ Most people have things they need to do every morning, like ensuring their lapto
 ## Tech Stack
 
 * React Native for UI/Frontend
-* SQL Lite for storing and editing tasks
-* Native Base - UI Component Library for React Native
+* Express/MongoDB Atlas for backend storage/access
+* Dark Sky API for weather
 
 ## User Stories for MVP
 
 1. When the user opens the app, they see a simple two-button interface that allows them to configure their morning or start their day
 2. When the user clicks to configure their morning, they are brought to a list of existing tasks in their morning routine
-   * The user can see conditions associated with a given task
-   * The user can click a delete button next to each task to remove it from the database
+   * The user can see existing tasks
    * The user can input new tasks with given conditions and see it added to the list of tasks 
 3. When the user clicks to start their day, they see an ordered list of their routine items 
      * Conditional items will only render as appropriate (i.e. "rain" items will only appear if its supposed to rain on a given day)
