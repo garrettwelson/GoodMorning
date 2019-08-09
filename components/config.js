@@ -93,7 +93,14 @@ class Config extends Component {
       weather: this.state.weather,
       days: this.state.days
     })
-      .then(() => this.props.updateTasks());
+      .then(() => {
+        this.props.updateTasks()
+        this.setState({
+          text: "",
+          weather: "whatever",
+          days: "every day"
+        });
+      });
   }
 
   taskConfig(item) {
