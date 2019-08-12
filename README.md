@@ -1,16 +1,16 @@
-# Good Morning
+# GoodMorning
 
 
-## Morning
+## GoodMorning
 
-Good Day is a morning routine manager app meant to provide an easy and intuitive way to start your day off right. Unlike most task managers that focus on completing tasks once, Good Day allows you to build a set of **habits** that are essential to setting you up for a successful day. 
+GoodMorning is a morning routine manager app meant to provide an easy and intuitive way to start your day off right. Unlike most task managers that focus on completing tasks once, Good Day allows you to build a set of **habits** that are essential to setting you up for a successful day. 
 
 Most people have things they need to do every morning, like ensuring their laptop is in their bag or taking vitamins. Sometimes, however, there are tasks that should only be done under certain **conditions**, like taking an umbrella to work only if its supposed to rain. These conditional tasks are the core feature of Good Day and set it apart from other task managers.
 
 ## Tech Stack
 
 * React Native for UI/Frontend
-* Express/MongoDB Atlas for backend storage/access
+* Express/MongoDB Atlas for backend storage/access -- [See repo for backend server here](https://github.com/garrettwelson/Good-Morning-Backend)
 * Dark Sky API for weather
 
 ## User Stories for MVP
