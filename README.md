@@ -1,7 +1,7 @@
 # GoodMorning
 
 
-## GoodMorning
+## Purpose
 
 GoodMorning is a morning routine manager app meant to provide an easy and intuitive way to start your day off right. Unlike most task managers that focus on completing tasks once, Good Day allows you to build a set of **habits** that are essential to setting you up for a successful day. 
 
